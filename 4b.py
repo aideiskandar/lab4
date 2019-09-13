@@ -30,18 +30,19 @@ def scrollspeed():
     scroll = 0.0
     while True:
         try:
-            scroll = float(input("Enter Scroll Speed Value (0.1 ~ 0.9)"))
-            if scroll != 0.0:
+            value = float(input("Enter Scroll Speed Value (0.1 ~ 0.9)"))
+            if value != 0.0:
                 break
         except ValueError:
             print("Please enter decimal number")
-    display()
+    display(value)
 
-def display():
-    cleandata = map(lambda x: 255 if x > 255 else (0 if x < 0 else x), textcolor)
+def display(value):
+    scroll = value
+    cleandata = list(map(lambda x: 255 if x > 255 else (0 if x < 0 else x), textcolor))
     del textcolor[:]
     textcolor.extend(cleandata)
-    cleandata1 = map(lambda x: 255 if x > 255 else (0 if x < 0 else x), bgcolor)
+    cleandata1 = list(map(lambda x: 255 if x > 255 else (0 if x < 0 else x), bgcolor))
     del bgcolor[:]
     bgcolor.extend(cleandata1)
 
